@@ -3,7 +3,6 @@
 #include <string>
 using namespace std;
 
-// Storing an item
 struct Item
 {
    string name;
@@ -12,10 +11,8 @@ struct Item
    string status;
 };
 
-// Store all items here
 vector<Item> records;
 
-// Report a lost item
 void ReportLostItem()
 {
    Item item;
@@ -28,6 +25,9 @@ void ReportLostItem()
    cout << "Enter Owner: ";
    cin >> item.person;
 
+   cout << "Categories: " << endl;
+   cout << "Personal, Electronics, Clothing, Books, Other" << endl;
+
    cout << "Enter Category: ";
    cin >> item.category;
 
@@ -38,7 +38,6 @@ void ReportLostItem()
    cout << "\nLost item successfully reported!\n";
 }
 
-// Report a found item
 void ReportFoundItem()
 {
    Item item;
@@ -51,6 +50,9 @@ void ReportFoundItem()
    cout << "Enter Finder: ";
    cin >> item.person;
 
+   cout << "Categories: " << endl;
+   cout << "Personal, Electronics, Clothing, Books, Other" << endl;
+
    cout << "Enter Category: ";
    cin >> item.category;
 
@@ -61,7 +63,6 @@ void ReportFoundItem()
    cout << "\nFound item successfully reported!\n";
 }
 
-// Search for an item
 void SearchItem()
 {
    string searchItem;
@@ -92,7 +93,6 @@ void SearchItem()
    }
 }
 
-// Display all records
 void DisplayRecords()
 {
    cout << "\n--- ALL RECORDS ---\n";
@@ -113,25 +113,24 @@ void DisplayRecords()
    }
 }
 
-// Claim an item
 void ClaimItem()
 {
-   string itemName;
+   string itemName, owner;
 
    cout << "\n--- CLAIM ITEM ---\n";
 
-   cout << "Enter Item Name to Claim: ";
+   cout << "Enter Item Name: ";
    cin >> itemName;
+
+   cout << "Enter Owner Name: ";
+   cin >> owner;
 
    for (int i = 0; i < records.size(); i++)
    {
-      if (records[i].name == itemName && records[i].status == "FOUND")
+      if (records[i].name == itemName &&
+          records[i].person == owner &&
+          records[i].status == "LOST")
       {
-         cout << "\nItem found!\n";
-         cout << "Item Name: " << records[i].name << endl;
-         cout << "Category: " << records[i].category << endl;
-         cout << "Finder: " << records[i].person << endl;
-
          records[i].status = "CLAIMED";
 
          cout << "\nItem successfully claimed!\n";
@@ -139,18 +138,17 @@ void ClaimItem()
       }
    }
 
-   cout << "\nFound item not available for claiming.\n";
+   cout << "\nItem not found.\n";
 }
 
-// Exit program
 void ExitProgram()
 {
    cout << "\nThank you for using the Campus Lost and Found System!\n";
 }
 
-int main()
+int main(void)
 {
-   int choicemenu;
+   int menu;
 
    while (true)
    {
@@ -167,279 +165,36 @@ int main()
       cout << "6. Exit" << endl;
 
       cout << "\nEnter Choice: ";
-      cin >> choicemenu;
+      cin >> menu;
 
-      if (choicemenu == 1)
+      if (menu == 1)
       {
          ReportLostItem();
       }
-      else if (choicemenu == 2)
+      else if (menu == 2)
       {
          ReportFoundItem();
       }
-      else if (choicemenu == 3)
+      else if (menu == 3)
       {
          SearchItem();
       }
-      else if (choicemenu == 4)
+      else if (menu == 4)
       {
          DisplayRecords();
       }
-      else if (choicemenu == 5)
+      else if (menu == 5)
       {
          ClaimItem();
       }
-      else if (choicemenu == 6)
+      else if (menu == 6)
       {
          ExitProgram();
          break;
       }
       else
       {
-         cout << "\nInvalid Choice, Please Choose Again." << endl;
+         cout << "\nInvalid Choice, Please Choose Again (1-6)." << endl;
       }
    }
-
-   return 0;
 }
-
-// VVVV AI Flowchart and Pseudocode VVVV
-/*
-             START
-                |
-                v
-      Display Main Menu
-                |
-                v
-         Get User Choice
-                |
-      +---------+---------+
-      |         |         |
-      v         v         v
- Report     Report     Search
- Lost       Found       Item
-      |         |         |
-      +---------+---------+
-                |
-                v
-       Display Records?
-                |
-                v
-         Claim an Item?
-                |
-                v
-        Exit Selected?
-          /        \
-        No          Yes
-        |            |
-        +------------+
-                     |
-                     v
-                   END
-*/
-/*
-START
-
-Initialize arrays
-Set recordCount = 0
-
-DO
-
-    Display Main Menu
-
-    Read choice
-
-    SWITCH(choice)
-
-        CASE 1:
-            Call ReportLostItem()
-            BREAK
-
-        CASE 2:
-            Call ReportFoundItem()
-            BREAK
-
-        CASE 3:
-            Call SearchItem()
-            BREAK
-
-        CASE 4:
-            Call DisplayRecords()
-            BREAK
-
-        CASE 5:
-            Call ClaimItem()
-            BREAK
-
-        CASE 6:
-            Exit Program
-
-        DEFAULT:
-            Display "Invalid Choice"
-
-END SWITCH
-
-WHILE(choice != 6)
-
-END
-*/
-
-/* Function 1
-START
-   |
-Enter Item Name
-   |
-Enter Owner
-   |
-Enter Category
-   |
-Save Record
-   |
-Status = LOST
-   |
-Increase Record Count
-   |
-Display Success
-   |
-END
-*/
-/*
-FUNCTION ReportLostItem
-
-Input item name
-Input owner name
-Input category
-
-Store information into arrays
-
-Set status = "LOST"
-
-Increase record count
-
-Display "Item successfully recorded."
-
-END FUNCTION
-*/
-
-/* Function 2
-
-FUNCTION ReportFoundItem
-
-Input item name
-
-Input finder name
-
-Input category
-
-Store information
-
-Set status = "FOUND"
-
-Increase record count
-
-Display success message
-
-END FUNCTION
-*/
-
-/* Function 3
-START
-   |
-Enter Item Name
-   |
-Search Array
-   |
-Found?
- /     \
-No      Yes
- |        |
-Display   Display Record
-Not Found
-  |
-  END
-*/
-/*
-FUNCTION SearchItem
-
-Input search name
-
-FOR every record
-
-    IF item name matches search
-
-        Display record
-
-        RETURN
-
-END FOR
-
-Display "Item not found."
-
-END FUNCTION
-*/
-
-/* Function 4
-FUNCTION DisplayRecords
-
-IF no records
-
-    Display "No records."
-
-ELSE
-
-FOR every record
-
-Display
-Item Name
-Category
-Owner/Finder
-Status
-
-END FOR
-
-END IF
-
-END FUNCTION
-*/
-
-/* Function 5
-START
-   |
-Enter Item Name
-   |
-Search Item
-   |
-Found?
- /    \
-No     Yes
- |        |
-Display   Status = CLAIMED
-Not Found |
-          |
-   Display Success
-          |
-         END
-*/
-/*
-FUNCTION ClaimItem
-
-Input item name
-
-FOR every record
-
-IF item exists
-
-Change status to CLAIMED
-
-Display success
-
-RETURN
-
-END IF
-
-END FOR
-
-Display "Item not found."
-
-END FUNCTION
-*/
