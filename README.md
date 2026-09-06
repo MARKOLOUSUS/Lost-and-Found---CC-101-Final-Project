@@ -8,27 +8,19 @@ Status = "FOUND" > Increase Record Count > Display Success > END
 
 ## Search Item
 START > Enter Item Name > Search Array > 
-Found? > Yes > Display Record > END
-# V
+Found? > Yes > Display Record > END**
+ V
 No > Display "Not Found" > END
 
 ## Display Records
 IF no records = Display "No records.
-ELSE
-FOR every record
-#  V
-Display
-Item Name
-Category
-Owner/Finder
-Status
-# V
-END
+ELSE**
+FOR every record > Display, Item Name, Category, Owner/Finder, Status > END
 
 ## Claim Lost Item
 START > Enter Item Name > Search Item >
 Found? > Yes > Status = CLAIMED > Display Success > END
-# V
+ V
 No > Display = Not Found
 
 ## Exit Program
