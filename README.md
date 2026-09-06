@@ -7,7 +7,7 @@ START > Enter Found Item Name > Enter Finder > Enter Category > Save Record >
 Status = "FOUND" > Increase Record Count > Display Success > END
 
 ## Search Item
-START > Enter Item Name > Search Array > 
+START > Enter Item Name > Search Array > <br>
 Found? > Yes > Display Record > END <br>
  V<br>
 No > Display "Not Found" > END
@@ -18,7 +18,7 @@ ELSE<br>
 FOR every record > Display, Item Name, Category, Owner/Finder, Status > END
 
 ## Claim Lost Item
-START > Enter Item Name > Search Item >
+START > Enter Item Name > Search Item > <br>
 Found? > Yes > Status = CLAIMED > Display Success > END <br>
  V<br>
 No > Display = Not Found > END
