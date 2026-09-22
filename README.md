@@ -5,5 +5,20 @@
 
 ## Algorithm
 1. Start
-2. Input 1-6 (menu/functions)
-3. 
+2. Display menu
+3. Input menu (no. 1-6)
+4. If 1 - Report Lost Item
+# Input Item Name
+5. If 2 - Report Found Item
+
+6. If 3 - Search for Item
+
+7. If 4 - Display All Record
+
+8. If 5 - Claim Item
+
+9. If 6 - Exit the Program
+
+10. End
+
+
