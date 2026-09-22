@@ -1,4 +1,10 @@
+// Program: Campus Lost And Found Management System
+/* Description : Students who lose personal belongings often don't know whether someone has already found them.
+Likewise, people who find items have no organized way to record them. This system helps record lost and found items, 
+earch records, and mark items as claimed.*/
+
 // Author: MARK DANIEL C. COMENDADOR
+// Date: September 6, 2026 - November 23- 25, 2026
 // CC 101 - Final Project
 #include <iostream>
 #include <vector>
