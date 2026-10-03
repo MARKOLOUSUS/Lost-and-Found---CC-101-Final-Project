@@ -18,6 +18,7 @@ struct Item
    string name;
    string person;
    string location;
+   string location;
    string status;
 };
 
@@ -34,10 +35,14 @@ void ReportLostItem()
 
    cout << "Enter Item Name: ";
    getline(cin, item.name);
+   getline(cin, item.name);
 
    cout << "Enter Owner: ";
    getline(cin, item.person);
+   getline(cin, item.person);
 
+   cout << "What Location was it Lost?: ";
+   getline(cin, item.location);
    cout << "What Location was it Lost?: ";
    getline(cin, item.location);
 
@@ -59,10 +64,14 @@ void ReportFoundItem()
 
    cout << "Enter Item Name: ";
    getline(cin, item.name);
+   getline(cin, item.name);
 
    cout << "Enter Finder: ";
    getline(cin, item.person);
+   getline(cin, item.person);
 
+   cout << "What Location was it Found?: ";
+   getline(cin, item.location);
    cout << "What Location was it Found?: ";
    getline(cin, item.location);
 
@@ -85,6 +94,7 @@ void SearchItem()
 
    cout << "Enter Item Name: ";
    getline(cin, searchItem);
+   getline(cin, searchItem);
 
    for (int i = 0; i < records.size(); i++)
    {
@@ -93,6 +103,7 @@ void SearchItem()
          cout << endl
               << "Item found!" << endl;
          cout << "Item Name: " << records[i].name << endl;
+         cout << "Location: " << records[i].location << endl;
          cout << "Location: " << records[i].location << endl;
          cout << "Owner/Finder: " << records[i].person << endl;
          cout << "Status: " << records[i].status << endl;
@@ -126,6 +137,7 @@ void DisplayRecords()
            << "Record #" << i + 1 << endl;
       cout << "Item Name: " << records[i].name << endl;
       cout << "Location: " << records[i].location << endl;
+      cout << "Location: " << records[i].location << endl;
       cout << "Owner/Finder: " << records[i].person << endl;
       cout << "Status: " << records[i].status << endl;
    }
@@ -141,6 +153,7 @@ void ClaimItem()
 
    cout << "Enter Item Name to Claim: ";
    getline(cin, itemName);
+   getline(cin, itemName);
 
    for (int i = 0; i < records.size(); i++)
    {
@@ -149,6 +162,7 @@ void ClaimItem()
          cout << endl
               << "Item found!" << endl;
          cout << "Item Name: " << records[i].name << endl;
+         cout << "Location: " << records[i].location << endl;
          cout << "Location: " << records[i].location << endl;
          cout << "Finder: " << records[i].person << endl;
 
@@ -191,6 +205,7 @@ int main()
       cout << endl
            << "Enter Choice: ";
       cin >> choicemenu;
+      cin.ignore();
       cin.ignore();
 
       if (choicemenu == 1)
