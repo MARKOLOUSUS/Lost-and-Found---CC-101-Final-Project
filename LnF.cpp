@@ -7,6 +7,7 @@ Description : This system helps record lost and found items, search records, and
 */
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <string>
 using namespace std;
@@ -27,7 +28,9 @@ void ReportLostItem()
 {
    Item item;
 
-   cout << "\n--- REPORT LOST ITEM ---\n";
+   cout << endl
+        << string(6, '-') << "REPORT LOST ITEM" << string(6, '-')
+        << endl;
 
    cout << "Enter Item Name: ";
    getline(cin, item.name);
@@ -42,14 +45,17 @@ void ReportLostItem()
 
    records.push_back(item);
 
-   cout << "\nLost item successfully reported!\n";
+   cout << endl
+        << "Lost item successfully reported!" << endl;
 }
 
 void ReportFoundItem()
 {
    Item item;
 
-   cout << "\n--- REPORT FOUND ITEM ---\n";
+   cout << endl
+        << string(6, '-') << "REPORT LOST ITEM" << string(6, '-')
+        << endl;
 
    cout << "Enter Item Name: ";
    getline(cin, item.name);
@@ -64,7 +70,8 @@ void ReportFoundItem()
 
    records.push_back(item);
 
-   cout << "\nFound item successfully reported!\n";
+   cout << endl
+        << "Found item successfully reported!" << endl;
 }
 
 void SearchItem()
@@ -72,7 +79,9 @@ void SearchItem()
    string searchItem;
    bool found = false;
 
-   cout << "\n--- SEARCH ITEM ---\n";
+   cout << endl
+        << string(6, '-') << "SEARCH ITEM" << string(6, '-')
+        << endl;
 
    cout << "Enter Item Name: ";
    getline(cin, searchItem);
@@ -81,7 +90,8 @@ void SearchItem()
    {
       if (records[i].name == searchItem)
       {
-         cout << "\nItem found!\n";
+         cout << endl
+              << "Item found!" << endl;
          cout << "Item Name: " << records[i].name << endl;
          cout << "Location: " << records[i].location << endl;
          cout << "Owner/Finder: " << records[i].person << endl;
@@ -93,23 +103,27 @@ void SearchItem()
 
    if (!found)
    {
-      cout << "\nItem not found.\n";
+      cout << endl
+           << "Item not found." << endl;
    }
 }
 
 void DisplayRecords()
 {
-   cout << "\n--- ALL RECORDS ---\n";
+   cout << endl
+        << string(6, '-') << "ALL RECORD" << string(6, '-')
+        << endl;
 
    if (records.empty())
    {
-      cout << "No records available.\n";
+      cout << "No records available." << endl;
       return;
    }
 
    for (int i = 0; i < records.size(); i++)
    {
-      cout << "\nRecord #" << i + 1 << endl;
+      cout << endl
+           << "Record #" << i + 1 << endl;
       cout << "Item Name: " << records[i].name << endl;
       cout << "Location: " << records[i].location << endl;
       cout << "Owner/Finder: " << records[i].person << endl;
@@ -121,7 +135,9 @@ void ClaimItem()
 {
    string itemName;
 
-   cout << "\n--- CLAIM ITEM ---\n";
+   cout << endl
+        << string(6, '-') << "CLAIM ITEM" << string(6, '-')
+        << endl;
 
    cout << "Enter Item Name to Claim: ";
    getline(cin, itemName);
@@ -130,24 +146,28 @@ void ClaimItem()
    {
       if (records[i].name == itemName && records[i].status == "FOUND")
       {
-         cout << "\nItem found!\n";
+         cout << endl
+              << "Item found!" << endl;
          cout << "Item Name: " << records[i].name << endl;
          cout << "Location: " << records[i].location << endl;
          cout << "Finder: " << records[i].person << endl;
 
          records[i].status = "CLAIMED";
 
-         cout << "\nItem successfully claimed!\n";
+         cout << endl
+              << "Item successfully claimed!" << endl;
          return;
       }
    }
 
-   cout << "\nFound item not available for claiming.\n";
+   cout << endl
+        << "Found item not available for claiming." << endl;
 }
 
 void ExitProgram()
 {
-   cout << "\nThank you for using the Campus Lost and Found System!\n";
+   cout << endl
+        << "Thank you for using the Campus Lost and Found System!" << endl;
 }
 
 int main()
@@ -157,9 +177,9 @@ int main()
    while (true)
    {
       cout << endl;
-      cout << "------------------------------" << endl;
-      cout << " CAMPUS LOST AND FOUND SYSTEM" << endl;
-      cout << "------------------------------" << endl;
+      cout << string(30, '-') << endl;
+      cout << "CAMPUS LOST AND FOUND SYSTEM" << endl;
+      cout << string(30, '-') << endl;
 
       cout << "1. Report Lost Item" << endl;
       cout << "2. Report Found Item" << endl;
@@ -168,7 +188,8 @@ int main()
       cout << "5. Claim Item" << endl;
       cout << "6. Exit" << endl;
 
-      cout << "\nEnter Choice: ";
+      cout << endl
+           << "Enter Choice: ";
       cin >> choicemenu;
       cin.ignore();
 
@@ -199,7 +220,8 @@ int main()
       }
       else
       {
-         cout << "\nInvalid Choice, Please Choose Again." << endl;
+         cout << endl
+              << "Invalid Choice, Please Choose Again." << endl;
       }
    }
 
