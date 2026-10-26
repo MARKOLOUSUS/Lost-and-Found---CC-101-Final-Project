@@ -15,7 +15,7 @@
 
    * `Input Item Name`
    * `Input Ownwer Name`
-   * `Input Categories`
+   * `Input Location`
    * `Record Item`
    * `Item Status Lost`
    * `Continue the loop`
@@ -24,7 +24,7 @@
 
    * `Input Item Name`
    * `Input Finder Name`
-   * `Input Categories`
+   * `Input Location`
    * `Record Item`
    * `Item Status Found`
    * `Continue the loop`
