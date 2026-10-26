@@ -12,17 +12,14 @@ Description : This system helps record lost and found items, search records, and
 #include <string>
 using namespace std;
 
-// Storing an item
 struct Item
 {
    string name;
    string person;
    string location;
-   string location;
    string status;
 };
 
-// Store all items here
 vector<Item> records;
 
 void ReportLostItem()
@@ -35,14 +32,10 @@ void ReportLostItem()
 
    cout << "Enter Item Name: ";
    getline(cin, item.name);
-   getline(cin, item.name);
 
    cout << "Enter Owner: ";
    getline(cin, item.person);
-   getline(cin, item.person);
 
-   cout << "What Location was it Lost?: ";
-   getline(cin, item.location);
    cout << "What Location was it Lost?: ";
    getline(cin, item.location);
 
@@ -51,7 +44,7 @@ void ReportLostItem()
    records.push_back(item);
 
    cout << endl
-        << "Lost item successfully reported!" << endl;
+        << "Lost item successfully reported!\n\n";
 }
 
 void ReportFoundItem()
@@ -64,14 +57,10 @@ void ReportFoundItem()
 
    cout << "Enter Item Name: ";
    getline(cin, item.name);
-   getline(cin, item.name);
 
    cout << "Enter Finder: ";
    getline(cin, item.person);
-   getline(cin, item.person);
 
-   cout << "What Location was it Found?: ";
-   getline(cin, item.location);
    cout << "What Location was it Found?: ";
    getline(cin, item.location);
 
@@ -80,7 +69,7 @@ void ReportFoundItem()
    records.push_back(item);
 
    cout << endl
-        << "Found item successfully reported!" << endl;
+        << "Found item successfully reported!\n\n";
 }
 
 void SearchItem()
@@ -94,7 +83,6 @@ void SearchItem()
 
    cout << "Enter Item Name: ";
    getline(cin, searchItem);
-   getline(cin, searchItem);
 
    for (int i = 0; i < records.size(); i++)
    {
@@ -104,9 +92,9 @@ void SearchItem()
               << "Item found!" << endl;
          cout << "Item Name: " << records[i].name << endl;
          cout << "Location: " << records[i].location << endl;
-         cout << "Location: " << records[i].location << endl;
          cout << "Owner/Finder: " << records[i].person << endl;
-         cout << "Status: " << records[i].status << endl;
+         cout << "Status: " << records[i].status << endl
+              << endl;
 
          found = true;
       }
@@ -115,7 +103,7 @@ void SearchItem()
    if (!found)
    {
       cout << endl
-           << "Item not found." << endl;
+           << "Item not found.\n\n";
    }
 }
 
@@ -127,7 +115,7 @@ void DisplayRecords()
 
    if (records.empty())
    {
-      cout << "No records available." << endl;
+      cout << "No records available.\n";
       return;
    }
 
@@ -137,9 +125,9 @@ void DisplayRecords()
            << "Record #" << i + 1 << endl;
       cout << "Item Name: " << records[i].name << endl;
       cout << "Location: " << records[i].location << endl;
-      cout << "Location: " << records[i].location << endl;
       cout << "Owner/Finder: " << records[i].person << endl;
-      cout << "Status: " << records[i].status << endl;
+      cout << "Status: " << records[i].status << endl
+           << endl;
    }
 }
 
@@ -153,7 +141,6 @@ void ClaimItem()
 
    cout << "Enter Item Name to Claim: ";
    getline(cin, itemName);
-   getline(cin, itemName);
 
    for (int i = 0; i < records.size(); i++)
    {
@@ -163,82 +150,73 @@ void ClaimItem()
               << "Item found!" << endl;
          cout << "Item Name: " << records[i].name << endl;
          cout << "Location: " << records[i].location << endl;
-         cout << "Location: " << records[i].location << endl;
          cout << "Finder: " << records[i].person << endl;
 
          records[i].status = "CLAIMED";
 
          cout << endl
-              << "Item successfully claimed!" << endl;
+              << "Item successfully claimed!\n\n";
          return;
       }
    }
 
    cout << endl
-        << "Found item not available for claiming." << endl;
+        << "Found item not available for claiming.\n\n";
 }
 
 void ExitProgram()
 {
    cout << endl
-        << "Thank you for using the Campus Lost and Found System!" << endl;
+        << "Thank you for using the Campus Lost and Found System!\n";
 }
 
 int main()
 {
    int choicemenu;
 
+   cout << endl;
+   cout << string(30, '-') << endl;
+   cout << "CAMPUS LOST AND FOUND SYSTEM\n";
+
    while (true)
    {
-      cout << endl;
       cout << string(30, '-') << endl;
-      cout << "CAMPUS LOST AND FOUND SYSTEM" << endl;
-      cout << string(30, '-') << endl;
+      cout << "1. Report Lost Item\n";
+      cout << "2. Report Found Item\n";
+      cout << "3. Search Item\n";
+      cout << "4. Display All Records\n";
+      cout << "5. Claim Item\n";
+      cout << "6. Exit\n";
 
-      cout << "1. Report Lost Item" << endl;
-      cout << "2. Report Found Item" << endl;
-      cout << "3. Search Item" << endl;
-      cout << "4. Display All Records" << endl;
-      cout << "5. Claim Item" << endl;
-      cout << "6. Exit" << endl;
-
-      cout << endl
-           << "Enter Choice: ";
+      cout << "Enter Choice: ";
       cin >> choicemenu;
       cin.ignore();
-      cin.ignore();
 
-      if (choicemenu == 1)
+      switch (choicemenu)
       {
+      case 1:
          ReportLostItem();
-      }
-      else if (choicemenu == 2)
-      {
-         ReportFoundItem();
-      }
-      else if (choicemenu == 3)
-      {
-         SearchItem();
-      }
-      else if (choicemenu == 4)
-      {
-         DisplayRecords();
-      }
-      else if (choicemenu == 5)
-      {
-         ClaimItem();
-      }
-      else if (choicemenu == 6)
-      {
-         ExitProgram();
          break;
-      }
-      else
-      {
+      case 2:
+         ReportFoundItem();
+         break;
+      case 3:
+         SearchItem();
+         break;
+      case 4:
+         DisplayRecords();
+         break;
+      case 5:
+         ClaimItem();
+         break;
+      case 6:
+         ExitProgram();
+         return 0;
+         break;
+      default:
          cout << endl
-              << "Invalid Choice, Please Choose Again." << endl;
+              << "Invalid Choice, Please Choose Again.\n";
       }
    }
-
    return 0;
 }
